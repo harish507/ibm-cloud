@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: data-mq
+  annotations:
+    volume.beta.kubernetes.io/storage-class: "ibmc-file-silver"
+  labels:
+    app: ibm-mq
+    chart: ibm-mqadvanced-server-dev
+    heritage: Tiller
+    release: "mq"
+    billingType: "hourly"
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 20Gi

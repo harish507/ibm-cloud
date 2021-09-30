@@ -1,0 +1,11 @@
+apiVersion: ""
+generated: "0001-01-01T00:00:00Z"
+repositories:
+- caFile: ""
+  certFile: ""
+  insecure_skip_tls_verify: false
+  keyFile: ""
+  name: ibm-charts
+  password: ""
+  url: https://raw.githubusercontent.com/IBM/charts/master/repo/stable/
+  username: ""
