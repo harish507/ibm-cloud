@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:camel="http://camel.apache.org/schema/spring"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+	<routeContext id="loadRoutes" xmlns="http://camel.apache.org/schema/spring">
+		
+	<route id="routesLoader">
+		<from uri="file:routes/integrations?idempotent=true&amp;idempotentKey=${file:name}-${file:modified}&amp;noop=true" /> 
+		<to uri="log:routechangeIdentified?level=INFO" />
+		<process ref="loadRoutesService"></process>
+		<to uri="log:routeLoaded?level=INFO" />
+	</route>
+
+	</routeContext>
+	<bean id="loadRoutesService"
+		class="com.miracle.camel.utility.LoadRoutesProcessor"></bean>
+</beans>
