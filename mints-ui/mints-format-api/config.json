@@ -1,0 +1,12 @@
+{
+	"MongoDB": {
+		"url": "mongodb://mongodb-mongodb-replicaset-0:27017/mintsdb",
+		"url_test": "mongodb://root:0HGWasShnN@52.154.250.157:27017/mintsdb?authSource=admin",
+		"url_dev": "mongodb+srv://mint_user:pass_mint@clustermint-1x7sj.mongodb.net/mintsdb?retryWrites=true&w=majority",
+		"url_local": "mongodb://127.0.0.1:27017/mintsdb"
+	},
+	"propertiesFile": "/usr/src/app/volume/properties/Properties.properties",
+	"constants":{
+		"MONGODB_URL":"spring.data.mongodb.uri"
+	}
+}

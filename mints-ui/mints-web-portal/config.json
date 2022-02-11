@@ -1,0 +1,9 @@
+{
+	"options": {
+		"DBConnection_pod": "mongodb://mongodb-mongodb-replicaset-0:27017/mintsdb",
+		"DBConnection": "mongodb+srv://mint_user:pass_mint@clustermint-1x7sj.mongodb.net/mintsPortalDb?retryWrites=true&w=majority"
+	},
+	"options_local": {
+		"DBConnection": "mongodb://127.0.0.1:27017/mintsPortalDb"
+	}
+}

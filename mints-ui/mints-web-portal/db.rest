@@ -1,0 +1,9 @@
+GET  http://localhost:7000/api/userClockIn HTTP/1.1
+
+###
+
+POST  http://localhost:7000/api/userClockIn HTTP/1.1
+content-type: application/json
+
+{"userId":"cs","clockInTime": 1631369150287,"clockInLocation":{"lat":17.7324687,"lng":83.30409569999999}}
+###

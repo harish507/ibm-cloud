@@ -1,0 +1,52 @@
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: mints-templates-api-service
+  namespace: default
+spec:
+  selector:
+    app: mints-templates-api-service
+  ports:
+    - protocol: TCP
+      #Port accessible inside cluster
+      port: 8002
+      # Port to forward to inside the pod
+      targetPort: 8002
+      #Port accessible outside cluster
+      #reactappPort: 30567
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mints-templates-api-service
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      app: mints-templates-api-service
+  replicas: 1
+  minReadySeconds: 15
+  template:
+    metadata:
+      labels:
+        app: mints-templates-api-service
+    spec:
+      containers:
+        - name: mints-templates-api-service
+          image: msslabsbentonville/minttemplatesapi:322
+          imagePullPolicy: Always
+          #resources:
+          #requests:
+          #memory: "400Mi"
+          #cpu: "500m"
+          ports:
+            - containerPort: 8002
+              protocol: TCP
+          volumeMounts:
+            - name: routes
+              mountPath: /usr/src/app/volume
+      volumes:
+        - name: routes
+          persistentVolumeClaim:
+            claimName: data-camelapp

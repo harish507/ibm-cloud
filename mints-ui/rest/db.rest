@@ -1,0 +1,41 @@
+GET  http://52.158.212.217:3000/api/db/ibmMqConfig HTTP/1.1
+
+###
+
+
+POST http://52.158.212.217:3000/api/db/ibmMqConfig HTTP/1.1
+content-type: application/json
+
+[]
+###
+
+GET  http://localhost:8000/db/integrations HTTP/1.1
+
+###
+
+DELETE  http://localhost:8000/db/integrations HTTP/1.1
+
+###
+
+POST  http://localhost:8000/db/integrations HTTP/1.1
+content-type: application/json
+
+[]
+###
+
+POST http://localhost:8001/integrations/find HTTP/1.1
+content-type: application/json
+
+{"$or":[{"source": "HOST"},{"target":"TWD"}]}
+###
+
+POST http://52.154.241.234:8222/camel/I0015 HTTP/1.1
+content-type: application/json
+
+<sample><test>some text</test></sample>
+###
+
+GET http://40.89.240.61:8080/featureTest/LoadTest?FeatureFileName=636631768146.feature HTTP/1.1
+content-type: application/json
+
+###

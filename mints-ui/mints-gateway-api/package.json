@@ -1,0 +1,23 @@
+{
+	"name": "mints-gateway-api",
+	"version": "1.0.0",
+	"private": true,
+	"scripts": {
+		"start": "node index.js",
+		"deploy": "npm install && npm start"
+	},
+	"dependencies": {
+		"@babel/core": "^7.9.6",
+		"@babel/preset-env": "^7.9.6",
+		"@babel/register": "^7.9.0",
+		"axios": "^0.19.2",
+		"body-parser": "^1.19.0",
+		"cors": "^2.8.5",
+		"express": "^4.17.1",
+		"express-fileupload": "^1.1.7-alpha.3",
+		"form-data": "^3.0.0",
+		"lodash": "^4.17.20",
+		"mongoose": "^5.9.15",
+		"properties-reader": "^2.2.0"
+	}
+}

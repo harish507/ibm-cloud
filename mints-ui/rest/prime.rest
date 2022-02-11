@@ -1,0 +1,16 @@
+GET  http://localhost:8000/db/masters HTTP/1.1
+
+###
+
+
+POST http://localhost:8000/db/appConfig HTTP/1.1
+content-type: application/json
+
+[{"_id":"5fda4e3825b31b0029ee3d1e","name":"Payroll","connection":"Payroll","type":"AMQ","__v":0,"amqUrl":"tcp://activemq-artemis:61616","password":"simetraehcapa","username":"artemis","wmqChannel":"","wmqHost":"","wmqPort":null,"wmqQueMgr":""},{"_id":"5fda4e4325b31b0029ee3d1f","name":"Logistics","connection":"Logistics","type":"WMQ","__v":0,"amqUrl":"","password":"Miracle@1234","username":"admin","wmqChannel":"DEV.ADMIN.SVRCONN","wmqHost":"mq-ibm-mq","wmqPort":1414,"wmqQueMgr":"mq"},{"_id":"5fda4e5c25b31b0029ee3d20","name":"General Ledger","connection":"Default","type":"MQ","username":"","password":"","amqUrl":"","wmqHost":"","wmqQueMgr":"","wmqChannel":"","wmqPort":null,"__v":0},{"_id":"5fda4e6425b31b0029ee3d21","name":"Treasury","connection":"Default","type":"MQ","__v":0},{"_id":"5fda4e7125b31b0029ee3d22","name":"Retail Management","connection":"Default","type":"MQ","__v":0},{"_id":"5fda4e8225b31b0029ee3d23","name":"Inventory Management","connection":"Default","type":"MQ","__v":0}]
+###
+
+POST http://localhost:8001/integrations/find HTTP/1.1
+content-type: application/json
+
+{"$or":[{"source": "HOST"},{"target":"TWD"}]}
+###

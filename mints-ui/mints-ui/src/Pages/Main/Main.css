@@ -1,0 +1,384 @@
+body {
+	margin: 0;
+	padding: 0;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
+		"Droid Sans", "Helvetica Neue", sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	background-color: #eee;
+}
+
+* {
+	font-size: 0.8rem;
+}
+select {
+	font-size: 0.5rem;
+}
+
+code {
+	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+error {
+	width: 100px;
+	border: 1px solid red;
+	/* background-color: lightpink; */
+	color: red;
+	font-size: 1.2rem;
+	margin: 200px auto;
+	padding: 10px 20px;
+}
+
+.intro {
+	width: 100%;
+	position: relative;
+	/* background: url("/images/intro-bg.png") center bottom no-repeat; */
+	background-size: cover;
+	min-height: 300px;
+}
+
+.content {
+	padding: 5%;
+	padding-top: 25px;
+}
+
+.app-container {
+	display: flex;
+	justify-content: space-between;
+	margin-top: 60px;
+	border: 1px solid black;
+	background-color: #eee;
+}
+
+.item-container {
+	width: 40%;
+}
+
+.card-container1 {
+	margin-top: 80px;
+}
+
+.item {
+	padding: 5px;
+	border: 1px solid navy;
+	font-size: 0.75em;
+	color: black;
+	background-color: lightgray;
+	margin-bottom: 5px;
+	text-align: center;
+	text-transform: uppercase;
+	text-decoration: none;
+}
+.item:hover {
+	border: 2px solid navy;
+}
+
+.int-node {
+	padding: 5px;
+	border: 1px solid black;
+	font-size: 0.75em;
+	color: black;
+	background-color: lightgray;
+	margin-bottom: 10px;
+	text-align: center;
+	text-transform: capitalize;
+	text-decoration: none;
+	height: 50px;
+}
+.int-node:hover {
+	border: 2px solid black;
+}
+.palette {
+	font-weight: 600;
+	background-color: white;
+	width: calc(100% - 10px);
+	padding: 5px;
+	margin-bottom: 5px;
+	text-align: center;
+	/* box-shadow: 1px 1px; */
+	border-radius: 3px;
+	border: 1px solid lightgray;
+	cursor: pointer;
+}
+.palette:hover {
+	background-color: lightgray !important;
+	border: 1px solid gray;
+}
+
+.palette-group {
+	width: 100%;
+	text-align: center;
+	border: 1px solid #aaaaaa;
+	margin-bottom: 10px;
+	border-radius: 10px;
+	/* background-color: white !important; */
+}
+.palette-group-header {
+	font-weight: 600;
+	width: calc(100% - 10px);
+	padding: 5px;
+	margin: 0;
+	/* border: 1px solid gray !important; */
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+}
+.palette-group-content {
+	width: calc(100% - 20px);
+	padding: 10px;
+	overflow: hidden;
+}
+
+.target {
+	width: calc(100% - 40px);
+	/* max-width: 400px; */
+	display: flex;
+	flex-direction: column;
+	/* justify-content: space-around; */
+	padding: 20px;
+	margin: 0 auto 0 auto;
+	/* border: 1px solid black; */
+	background-color: #eee;
+	/* width: 50%; */
+	min-height: 415px;
+}
+
+.target-close {
+	padding: 0 !important;
+	margin: 0 !important;
+}
+
+.target-arrow {
+	/* padding: 10px; */
+	padding-right: 5px;
+	text-align: right;
+	float: right;
+}
+.target-item {
+	min-width: 200px;
+	width: 100%;
+	height: 35px;
+	font-size: 2em;
+	padding-top: 5px;
+	text-align: center;
+	border-radius: 10px;
+	border: 0px solid;
+	margin-bottom: 10px;
+	box-shadow: 2px 2px;
+	cursor: hand;
+}
+.target-item-small {
+	width: 150px;
+	/* height: 25px; */
+	padding: 2px 5px;
+	margin: 0;
+	text-align: left;
+	margin-bottom: 0px;
+	cursor: pointer;
+	border: 1px dotted;
+}
+.target-item-picture {
+	width: 150px;
+	margin-bottom: 10px;
+	text-transform: capitalize;
+}
+.target-item-small1 {
+	min-width: 100px;
+	height: 25px;
+	width: 100%;
+	padding: 0;
+	margin: 0;
+	padding-right: 10px;
+	text-align: center;
+	border-radius: 10px;
+	border: 0px solid;
+	margin-bottom: 3px;
+	cursor: pointer;
+}
+.border {
+	border: 1px solid;
+	box-shadow: 1px 1px;
+}
+.border:hover {
+	border: 1px solid black;
+	box-shadow: 2px 2px;
+}
+.template-button {
+	border: 0;
+	margin: 0;
+	padding: 5;
+	text-decoration: none;
+	background-color: #ffffff;
+	border: '1px solid #aaa';
+	border-left: '5px solid #1E52CA';
+	border-radius: 5;
+	box-shadow: '2px 2px #999';
+}
+.template-button:hover {
+	font-weight: 700;
+	cursor: hand;
+}
+.template-button-content {
+	height: 160px;
+	overflow: hidden;
+}
+.color-light {
+	background-color: lightgray;
+	color: black;
+	border: 1px solid lightgray;
+}
+.color-dark {
+	background-color: black;
+	color: white;
+	border: 1px solid black;
+}
+
+.color-success,
+.outlet {
+	background-color: #81c784;
+	color: black;
+	border-color: green;
+}
+.color-warning,
+.trans {
+	background-color: #fff176;
+	color: black;
+	border-color: orange;
+}
+.color-danger,
+.orch {
+	background-color: #ef5350;
+	color: white;
+	border-color: black;
+}
+.color-gray,
+.enrich {
+	background-color: #bdbdbd;
+	color: black;
+	border-color: black;
+}
+.color-info,
+.inlet {
+	background-color: #45abfa;
+	color: black;
+	border-color: #45abfa;
+}
+.color-primary {
+	background-color: #1753cf;
+	color: white;
+	border-color: #1753cf;
+}
+.color-secondary {
+	background-color: #e2034f;
+	color: white;
+	border-color: #e2034f;
+}
+
+/* MAIN NAV BAR BEGIN */
+
+ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.mainMenu a {
+	margin: 0;
+	text-align: center;
+	padding: 3px 10px 3px 10px;
+	margin-right: 5px;
+	background: #1753cf;
+	color: white;
+	display: flex;
+	text-decoration: none;
+	align-content: center;
+}
+.subMenu a {
+	margin: 0;
+	text-align: center;
+	min-width: 100px;
+	padding: 5px 10px 5px 10px;
+	background: #ddd;
+	color: #1753cf;
+	display: flex;
+	text-decoration: none;
+	align-content: center;
+}
+.mainMenuIcon {
+	margin-right: 5px;
+}
+.mainMenuText {
+	text-transform: none !important;
+}
+.mainMenu > li {
+	display: inline-block;
+	margin-left: 5px;
+}
+.mainMenu > li:hover > a {
+	background: #fff;
+	color: #1753cf;
+	cursor: pointer;
+	border-radius: 20px;
+}
+.subMenu {
+	position: absolute;
+	display: none;
+	margin-left: 15px;
+}
+.subMenu li {
+	/* border-top: 1px solid #1753cf; */
+	border-bottom: 1px solid #1753cf;
+	position: relative;
+}
+.subMenu li:hover > a,
+.subMenu a:hover {
+	background-color: #1753cf;
+	color: #eee;
+	cursor: pointer;
+}
+.mainMenu > li:hover .subMenu {
+	display: block;
+}
+.SuperSubMenu {
+	position: absolute;
+	top: 5px;
+	right: 0;
+	-ms-transform: translate(100%, 0);
+	-webkit-transform: translate(100%, 0);
+	transform: translate(100%, 0);
+	display: none;
+}
+.SuperSubMenu li {
+	/* border-top: 1px solid #1753cf; */
+	border-bottom: 1px solid #1753cf;
+	position: relative;
+}
+.SuperSubMenu a:hover {
+	background-color: #1753cf;
+	color: #eee;
+	cursor: pointer;
+}
+
+.subMenu li:hover > .SuperSubMenu {
+	display: block;
+}
+
+/* MAIN NAV BAR END */
+
+/* HOVER ICONS FOR SELECT INTEGRATION BEGIN */
+.select-item {
+	position: relative;
+}
+
+.select-item:hover .hover-icons {
+	display: flex;
+	flex-direction: column;
+}
+
+.hover-icons {
+	padding-top: 10px;
+	position: absolute;
+	right: 0;
+	top: 0;
+	display: none;
+}
+
+/* HOVER ICONS FOR SELECT INTEGRATION END */

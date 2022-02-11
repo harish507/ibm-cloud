@@ -1,0 +1,1 @@
+# MINTS stands for Miracle Integration Service

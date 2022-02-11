@@ -1,0 +1,52 @@
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: mints-gateway-api-service
+  namespace: default
+spec:
+  selector:
+    app: mints-gateway-api-service
+  ports:
+    - protocol: TCP
+      #Port accessible inside cluster
+      port: 8000
+      # Port to forward to inside the pod
+      targetPort: 8000
+      #Port accessible outside cluster
+      #reactappPort: 30567
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mints-gateway-api-service
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      app: mints-gateway-api-service
+  replicas: 1
+  minReadySeconds: 15
+  template:
+    metadata:
+      labels:
+        app: mints-gateway-api-service
+    spec:
+      containers:
+        - name: mints-gateway-api-service
+          image: msslabsbentonville/mintgatewayapi:318
+          imagePullPolicy: Always
+          #resources:
+          #requests:
+          #memory: "400Mi"
+          #cpu: "500m"
+          ports:
+            - containerPort: 8000
+              protocol: TCP
+          volumeMounts:
+            - name: routes
+              mountPath: /usr/src/app/volume
+      volumes:
+        - name: routes
+          persistentVolumeClaim:
+            claimName: data-camelapp

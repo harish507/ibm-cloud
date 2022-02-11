@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Material-ui-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <title>Miracle Integration Service</title>
+
+
+<!-- Styles to display test results -->
+<style type="text/css">
+  div#report-content {
+    margin-top: 5px;
+    margin-left: 30px;
+    width: 100%;
+    text-align: left;
+  }
+
+  table#report-summary {
+    text-align: left;
+    margin-top: 20px;
+    width: 700px;
+    margin-left: 10px;
+  }
+
+  table#report-summary th.title {
+    background-color: #CCCCCC;
+    font-size: 14px;
+    font-weight: bold;
+  }
+
+  table#report-summary tr.even th {
+    background-color: #DDDDDD;
+  }
+
+  table#report-summary tr.odd th {
+    background-color: #EAEAEA;
+  }
+
+  table#report-summary tr.even td {
+    background-color: #DDDDDD;
+  }
+
+  table#report-summary tr.odd td {
+    background-color: #EAEAEA;
+  }
+
+  table#test-results {
+    text-align: left;
+    margin-left: 10px;
+    margin-bottom: 20px;
+    width: 800px;
+  }
+
+  table#test-results tr th {
+    padding: 2px 0 2px 10px;
+    cursor: pointer;
+  }
+
+  span.tooltip {
+    color: #555555;
+    text-align: left;
+    display: none;
+    width: 350px;
+    position: absolute;
+    background-color: #EAEAEA;
+    border: 1px solid #333333;
+    font-size: 11px;
+    font-weight: normal;
+    padding: 3px;
+  }
+
+  span.tooltip i {
+    display: block;
+    text-decoration: underline;
+  }
+
+  table#test-results tr.success th {
+    color: #009900;
+  }
+
+  table#test-results tr.success td {
+    color: #009900;
+  }
+
+  table#test-results tr.skip th {
+    color: #999999;
+    text-decoration: line-through;
+  }
+
+  table#test-results tr.skip td {
+    color: #555555;
+  }
+
+  table#test-results tr.failure th {
+    color: #FF0000;
+  }
+
+  table#test-results tr.failure td {
+    color: #FF0000;
+  }
+
+  div.error-detail {
+    padding-left: 15px;
+    padding-right: 15px;
+    color: gray;
+    height: 70px;
+    width: 1200px;
+    overflow: scroll;
+    overflow-x: hidden;
+  }
+
+  div.code-snippet {
+    display: block;
+    border: 1px solid #AAAAAA;
+  }
+
+  h2.code-title {
+    background-color: #CCCCCC;
+    color: #555555;
+    display: block;
+    font-size: 1.2em;
+    margin: 0px;
+    padding: 10px;
+  }
+
+  pre.code {
+    color: #000000;
+    margin: 0px;
+    background-color: #FFFFFF;
+  }
+
+  pre.code-failed {
+    color: #AA0000;
+    margin: 0px;
+    background-color: #EAEAEA;
+  }
+
+  span.line-number {
+    background-color: #DDDDDD;
+    border-right: 1px solid #BBBBBB;
+    color: #555555;
+    display: block;
+    float: left;
+    width: 30px;
+  }
+</style>
+<!-- Styles to display test results -->
+
+<!-- Scripts to display test results -->
+<script type="text/javascript">
+  var tooltipElement;
+  var delayer;
+  var delayTimeInMs = 800;
+  var cursorX;
+  var cursorY;
+
+  function showTooltip(elementId, event) {
+    tooltipElement = document.getElementById(elementId);
+    cursorX = event.pageX ? event.pageX : window.event.clientX + document.documentElement.scrollLeft;
+    cursorY = event.pageY ? event.pageY : window.event.clientY + document.documentElement.scrollTop;
+    delayer = setTimeout('showTooltipDelayed();', delayTimeInMs);
+  }
+
+  function showTooltipDelayed() {
+    tooltipElement.style.display = "block";
+    setTooltipPosition();
+  }
+
+  function hideTooltip() {
+    clearTimeout(delayer);
+    tooltipElement.style.display = "none";
+  }
+
+  function setTooltipPosition() {
+    if (tooltipElement != null && tooltipElement.style.display == "block") {
+      var cursorPosLeft = cursorX + tooltipElement.offsetParent.scrollLeft - tooltipElement.offsetParent.offsetLeft;
+      var cursorPosTop = cursorY + tooltipElement.offsetParent.scrollTop - tooltipElement.offsetParent.offsetTop;
+      var tooltipCursorDistLeft = 20;
+      var tooltipCursorDistTop = 10;
+      var tooltipPosLeft = cursorPosLeft + tooltipCursorDistLeft;
+      var tooltipPosTop = cursorPosTop + tooltipCursorDistTop
+      var tooltipPosRight = tooltipPosLeft + tooltipElement.offsetWidth;
+      var tooltipPosBottom = tooltipPosTop + tooltipElement.offsetHeight;
+      var windowWidth = window.innerWidth ? window.innerWidth + window.pageXOffset - 60 : document.documentElement.clientWidth + document.documentElement.scrollLeft - 40;
+      var windowHeight = window.innerHeight ? window.innerHeight + window.pageYOffset - 150 : document.documentElement.clientHeight + document.documentElement.scrollTop - 150;
+      var newTooltipPosLeft = (tooltipPosRight > windowWidth) ? (tooltipPosLeft - (tooltipPosRight - windowWidth)) : tooltipPosLeft;
+      var newTooltipPosTop = (tooltipPosBottom > windowHeight) ? (tooltipPosTop - (tooltipPosBottom - windowHeight)) : tooltipPosTop;
+      tooltipElement.style.left = newTooltipPosLeft + "px";
+      tooltipElement.style.top = newTooltipPosTop + "px";
+    }
+  }
+</script>
+<!-- Scripts to display test results -->
+
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+  </body>
+</html>

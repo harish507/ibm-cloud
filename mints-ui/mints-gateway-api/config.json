@@ -1,0 +1,26 @@
+{
+	"MongoDB": {
+		"url": "mongodb://mongodb-mongodb-replicaset-0:27017/mintsdb",
+		"url_test": "mongodb://root:0HGWasShnN@52.154.250.157:27017/mintsdb?authSource=admin",
+		"url_dev": "mongodb+srv://mint_user:pass_mint@clustermint-1x7sj.mongodb.net/mintsdb?retryWrites=true&w=majority",
+		"url_local": "mongodb://127.0.0.1:27017/mintsdb"
+	},
+	"services": {
+		"integrations": "http://mints-integrations-api-service:8001/integrations",
+		"templates": "http://mints-templates-api-service:8002/templates",
+		"palettes": "http://mints-templates-api-service:8002/palettes",
+		"format": "http://mints-format-api-service:8003",
+		"publish": "http://mints-publish-api-service:8004"
+	},
+	"services0": {
+		"integrations": "http://127.0.0.1:8001/integrations",
+		"templates": "http://127.0.0.1:8002/templates",
+		"palettes": "http://127.0.0.1:8002/palettes",
+		"format": "http://127.0.0.1:8003",
+		"publish": "http://127.0.0.1:8004"
+	},
+	"propertiesFile": "/usr/src/app/volume/properties/Properties.properties",
+	"constants":{
+		"MONGODB_URL":"spring.data.mongodb.uri"
+	}
+}
