@@ -1,0 +1,18 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:citrus-jms="http://www.citrusframework.org/schema/jms/config"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.citrusframework.org/schema/jms/config
+       http://www.citrusframework.org/schema/jms/config/citrus-jms-config.xsd">
+
+
+<citrus-jms:endpoint id="QueueEndpoint"
+            destination-name="citrus" timeout="10000"/>
+   <bean id="connectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+    <property name="userName" value="artemis"/>
+    <property name="password" value="simetraehcapa"/>
+    <property name="brokerURL" value="tcp://activemq-artemis:61616" />
+     </bean>
+</beans>

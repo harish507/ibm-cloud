@@ -1,0 +1,9 @@
+FROM java:8
+EXPOSE 8080
+RUN mkdir /usr/src/app
+WORKDIR /usr/src/app
+
+# ADD /target/citrus-integration-test-case-0.0.1-SNAPSHOT.jar mints-testing-api.jar
+COPY ./target/citrus-integration-test-case-0.0.1-SNAPSHOT.jar mints-testing-api.jar
+
+ENTRYPOINT ["java", "-jar", "mints-testing-api.jar"]
