@@ -1,0 +1,8 @@
+FROM java:8
+EXPOSE 8080
+RUN mkdir /usr/src/app
+WORKDIR /usr/src/app
+
+COPY ./target ./target
+ADD /target/jmapper-1.0-SNAPSHOT.jar jmapper-1.0.jar
+ENTRYPOINT ["java", "-jar", "jmapper-1.0.jar"]

@@ -34,7 +34,7 @@ spec:
     spec:
       containers:
         - name: mints-format-api-service
-          image: msslabsbentonville/mintformatapi:315
+          image: msslabsbentonville/mintformatapi:1390
           imagePullPolicy: Always
           #resources:
           #requests:
@@ -49,4 +49,4 @@ spec:
       volumes:
         - name: routes
           persistentVolumeClaim:
-            claimName: data-camelapp
+            claimName: mypvc

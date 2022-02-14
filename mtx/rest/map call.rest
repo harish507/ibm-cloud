@@ -1,0 +1,112 @@
+POST http://52.154.47.16:8080/xml/service/callXMLGenerationService?mapName=purchase_order HTTP/1.1
+###
+
+POST http://20.84.213.129:8080/xml/service/generate/output?mapName=FunctionsMap&projectPath=Order&cacheEnabled=1 HTTP/1.1
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<inOrders>
+<inOrder>
+    <orderno>123</orderno>
+    <ordername>purchase order</ordername>
+    <ponumber>4566</ponumber>
+    <customerno>1234</customerno>
+     <saleprice>3000</saleprice>
+	<discount>100</discount>
+     <tax>100</tax>
+         <countrycode>US</countrycode>
+	  	<scenarioname>process_data_to_target</scenarioname>
+         <instanceId>1</instanceId>	
+		<payload>filename</payload>
+   <address>
+          <streetno>2101</streetno>
+          <city>Dallas</city>
+          <zipcode>72752</zipcode>
+           <location>
+             <lat>32M</lat>
+             <lang>343B</lang>
+              <geo> 
+              <code>21.12.12334</code>
+			  <states>
+			  <state1>XXXXXXXXX</state1>
+			   <country>
+               <country1>MMMMMMMMMMM</country1>
+			     <pincode>
+			  <pincode1>0987654323</pincode1>
+			  </pincode>
+               </country>
+			  </states>
+             </geo>
+          </location>
+ </address>
+ </inOrder>
+<inOrder>
+    <orderno>456</orderno>
+    <ordername>purchase orde1r</ordername>
+    <ponumber>88899</ponumber>
+    <customerno>4567</customerno>
+     <saleprice>12</saleprice>
+	<discount>299</discount>
+      <tax>4</tax>
+	  	<countrycode>UK</countrycode>
+	  	<scenarioname>process_data_to_target </scenarioname>
+         <instanceId>1</instanceId>
+          <payload>filename</payload>
+   <address>
+          <streetno>2101</streetno>
+          <city>New York</city>
+          <zipcode>12345</zipcode>
+        <location>
+             <lat>32S</lat>
+             <lang>343E</lang>
+             <geo> 
+              <code>21.12.123</code>
+			   <states>
+			  <state1>YYYYYYYYYYYYYY</state1>
+			  <country>
+              <country1>NNNNNNN</country1>
+			  <pincode>
+			  <pincode1>12345678</pincode1>
+			  </pincode>
+              </country>
+			  </states>
+             </geo>
+          </location>
+ </address>
+ </inOrder>
+</inOrders>
+###
+
+POST http://localhost:8888/xml/service/generate/output?mapName=SalesOrder&projectPath=Sales HTTP/1.1
+content-type: application/json
+
+{
+    "inOrder": {
+        "orderno": "1111",
+        "ordername": "TEST",
+        "ponumber": "2222",
+        "customerno": "3333",
+        "address": {
+            "streetno": "4444"
+        }
+    }
+}
+###
+
+
+
+GET http://52.154.251.77:3000/api/db/mapsPropsConfig HTTP/1.1
+
+###
+
+
+POST http://52.154.251.77:3000/api/db/services HTTP/1.1
+content-type: application/json
+
+[]
+###
+
+POST http://20.40.240.36:8080/xml/service/generate/classes?projectPath=Products&request_xsd=input.orders.xsd&response_xsd=output.orders.xsd&isXML=XML&cacheEnabled=0 HTTP/1.1
+content-type: application/json
+
+[]
+###

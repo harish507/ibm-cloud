@@ -1,0 +1,13 @@
+FROM node:latest as builder
+RUN mkdir /usr/src/app
+WORKDIR /usr/src/app
+ENV PATH /usr/src/app/node_modules/.bin:$PATH
+
+COPY . /usr/src/app
+
+EXPOSE 4001
+RUN git config --global user.email "cnagampalli@miraclesoft.com"
+
+# start app
+CMD ["npm", "run", "deploy"]
+

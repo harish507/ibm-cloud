@@ -2,50 +2,51 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: mints-templates-api-service
+  name: mtx-api-service
   namespace: default
 spec:
   selector:
-    app: mints-templates-api-service
+    app: mtx-api-service
   ports:
     - protocol: TCP
       #Port accessible inside cluster
-      port: 8002
+      port: 4001
       # Port to forward to inside the pod
-      targetPort: 8002
+      targetPort: 4001
       #Port accessible outside cluster
       #reactappPort: 30567
+  type: LoadBalancer
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mints-templates-api-service
+  name: mtx-api-service
   namespace: default
 spec:
   selector:
     matchLabels:
-      app: mints-templates-api-service
+      app: mtx-api-service
   replicas: 1
   minReadySeconds: 15
   template:
     metadata:
       labels:
-        app: mints-templates-api-service
+        app: mtx-api-service
     spec:
       containers:
-        - name: mints-templates-api-service
-          image: msslabsbentonville/minttemplatesapi:1396
+        - name: mtx-api-service
+          image: msslabsbentonville/mtxapi:1480
           imagePullPolicy: Always
           #resources:
           #requests:
           #memory: "400Mi"
           #cpu: "500m"
           ports:
-            - containerPort: 8002
+            - containerPort: 4001
               protocol: TCP
           volumeMounts:
             - name: routes
-              mountPath: /usr/src/app/volume
+              mountPath: /usr/src/app/resources
       volumes:
         - name: routes
           persistentVolumeClaim:

@@ -1,0 +1,142 @@
+{
+	"id": "PurchaseOrder",
+	"name": "PurchaseOrder",
+	"project": "Products",
+	"className": "PurchaseOrder",
+	"sourceType": "XML",
+	"targetType": "XML",
+	"sourceFields": [
+		{
+			"ind": 0,
+			"parent": "",
+			"parentUp": "order",
+			"name": "order",
+			"level": 0
+		},
+		{
+			"ind": 1,
+			"parent": "",
+			"parentUp": "order.orderno",
+			"name": "orderno",
+			"type": "xs:int",
+			"level": 1
+		},
+		{
+			"ind": 2,
+			"parent": "",
+			"parentUp": "order.ordername",
+			"name": "ordername",
+			"type": "xs:string",
+			"level": 1
+		},
+		{
+			"ind": 3,
+			"parent": "",
+			"parentUp": "order.ponumber",
+			"name": "ponumber",
+			"type": "xs:int",
+			"level": 1
+		},
+		{
+			"ind": 4,
+			"parent": "",
+			"parentUp": "order.customerno",
+			"name": "customerno",
+			"type": "xs:int",
+			"level": 1
+		},
+		{
+			"ind": 5,
+			"parent": "",
+			"parentUp": "order.address",
+			"name": "address",
+			"level": 1
+		},
+		{
+			"ind": 6,
+			"parent": "address.",
+			"parentUp": "order.address.streetno",
+			"name": "streetno",
+			"type": "xs:string",
+			"level": 2
+		}
+	],
+	"targetFields": [
+		{
+			"ind": 0,
+			"parent": "",
+			"parentUp": "purchaseOrder",
+			"name": "purchaseOrder",
+			"level": 0
+		},
+		{
+			"ind": 1,
+			"parent": "",
+			"parentUp": "purchaseOrder.memberno",
+			"name": "memberno",
+			"type": "xs:int",
+			"level": 1,
+			"srcInd": 4,
+			"value": "customerno",
+			"key": "memberno",
+			"label": "customerno",
+			"sourceUp": "order.customerno"
+		},
+		{
+			"ind": 2,
+			"parent": "",
+			"parentUp": "purchaseOrder.ordername",
+			"name": "ordername",
+			"type": "xs:string",
+			"level": 1,
+			"srcInd": 2,
+			"value": "ordername",
+			"key": "ordername",
+			"label": "ordername",
+			"sourceUp": "order.ordername"
+		},
+		{
+			"ind": 3,
+			"parent": "",
+			"parentUp": "purchaseOrder.ponumber",
+			"name": "ponumber",
+			"type": "xs:int",
+			"level": 1,
+			"srcInd": 3,
+			"value": "ponumber",
+			"key": "ponumber",
+			"label": "ponumber",
+			"sourceUp": "order.ponumber"
+		},
+		{
+			"ind": 4,
+			"parent": "",
+			"parentUp": "purchaseOrder.poorderno",
+			"name": "poorderno",
+			"type": "xs:int",
+			"level": 1,
+			"srcInd": 1,
+			"value": "orderno",
+			"key": "poorderno",
+			"label": "orderno",
+			"sourceUp": "order.orderno"
+		},
+		{
+			"ind": 5,
+			"parent": "",
+			"parentUp": "purchaseOrder.streetno",
+			"name": "streetno",
+			"type": "xs:string",
+			"level": 1,
+			"srcInd": 6,
+			"value": "${address.streetno}",
+			"key": "streetno",
+			"label": "address.streetno",
+			"sourceUp": "order.address.streetno"
+		}
+	],
+	"sFile": "Order.xsd",
+	"tFile": "PurchaseOrder.xsd",
+	"sourceFile": {},
+	"targetFile": {}
+}

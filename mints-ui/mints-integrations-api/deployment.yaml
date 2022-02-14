@@ -35,7 +35,7 @@ spec:
     spec:
       containers:
         - name: mints-integrations-api-service
-          image: msslabsbentonville/mintintegrationsapi:319
+          image: msslabsbentonville/mintintegrationsapi:967
           imagePullPolicy: Always
           #resources:
           #requests:
@@ -50,4 +50,4 @@ spec:
       volumes:
         - name: routes
           persistentVolumeClaim:
-            claimName: data-camelapp
+            claimName: mypvc

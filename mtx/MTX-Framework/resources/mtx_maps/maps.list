@@ -1,0 +1,11 @@
+[
+	{
+		"id": "PurchaseOrder",
+		"name": "PurchaseOrder",
+		"project": "Products",
+		"sType": "XML",
+		"tType": "XML",
+		"sFile": "Order.xsd",
+		"tFile": "PurchaseOrder.xsd"
+	}
+]

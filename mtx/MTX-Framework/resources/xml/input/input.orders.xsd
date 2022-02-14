@@ -1,0 +1,29 @@
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="inOrders">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" name="inOrder">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="orderno" type="xs:string" />
+              <xs:element name="ordername" type="xs:string" />
+              <xs:element name="ponumber" type="xs:string" />
+              <xs:element name="saleprice" type="xs:integer" />
+              <xs:element name="tax" type="xs:integer" />
+              <xs:element name="customerno" type="xs:string" />
+              <xs:element name="address">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="streetno" type="xs:string" />
+                    <xs:element name="city" type="xs:string" />
+                      <xs:element name="zipcode" type="xs:string" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

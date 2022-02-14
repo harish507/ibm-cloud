@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<jmapper>
+	<configuration>
+		<inoutformat>xml2xml</inoutformat>
+		<inputdefinition>Order.xsd</inputdefinition>
+		<outputdefinition>PurchaseOrder.xsd</outputdefinition>
+	</configuration>
+	<class name="output.PurchaseOrder">
+		<attribute name="memberno">
+			<value name="customerno"/>
+		</attribute>
+		<attribute name="ordername">
+			<value name="ordername"/>
+		</attribute>
+		<attribute name="ponumber">
+			<value name="ponumber"/>
+		</attribute>
+	</class>
+</jmapper>

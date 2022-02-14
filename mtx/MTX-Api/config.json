@@ -1,0 +1,10 @@
+{
+	"options": {
+		"sharedPath": "/usr/src/app/resources",
+		"classUpdate": "http://mtxframework:8080/xml/service/generate/classes?projectPath=<projectPath>&request_xsd=<inputDef>&response_xsd=<outputDef>&isXML=<isXML>&cacheEnabled=0"
+	},
+	"options_local": {
+		"sharedPath": "E:\\REPOS\\MSS\\mints-ui\\mints-publish-api\\routes",
+		"classUpdate": "http://localhost:8888/xml/service/generate/classes?projectPath=<projectPath>&request_xsd=<inputDef>&response_xsd=<outputDef>&isXML=<isXML>&cacheEnabled=0"
+	}
+}
