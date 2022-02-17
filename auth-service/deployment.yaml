@@ -1,11 +1,11 @@
-﻿apiVersion: v1
 kind: Service
+apiVersion: v1
 metadata:
-  name: mintstestapi
+  name: auth-service
   namespace: default
 spec:
   selector:
-    app: mintstestapi
+    app: auth-service
   ports:
     - protocol: TCP
       #Port accessible inside cluster
@@ -19,33 +19,28 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mintstestapi
+  name: auth-service
   namespace: default
 spec:
   selector:
     matchLabels:
-      app: mintstestapi
+      app: auth-service
   replicas: 1
   minReadySeconds: 15
   template:
     metadata:
       labels:
-        app: mintstestapi
+        app: auth-service
     spec:
       containers:
-        - name: mintstestapi
-          image: msslabsbentonville/mintstestapis:1568
+        - name: auth-service
+          image: msslabsbentonville/auth-service:1571
           imagePullPolicy: Always
-
+          #resources:
+            #requests:
+              #memory: "400Mi"
+              #cpu: "500m"
           ports:
             - containerPort: 8080
               protocol: TCP
-          volumeMounts:
-            - name: routes
-              mountPath: /usr/mints/global_eai
-            - name: routes
-              mountPath: /usr/src/app/resources
-      volumes:
-        - name: routes
-          persistentVolumeClaim:
-            claimName: mypvc
+
