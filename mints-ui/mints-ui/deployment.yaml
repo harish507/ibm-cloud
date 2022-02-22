@@ -35,7 +35,7 @@ spec:
     spec:
       containers:
         - name: mints-ui-service
-          image: msslabsbentonville/mintui:1576
+          image: msslabsbentonville/mintui:1583
           imagePullPolicy: Always
           #resources:
           #requests:

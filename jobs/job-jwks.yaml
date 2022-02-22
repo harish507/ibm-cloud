@@ -1,0 +1,39 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: command-execution
+  namespace: default
+spec:
+  template:
+    metadata:
+      name: command-execution
+    spec:
+      serviceAccountName: internal-kubectl
+      containers:
+      - name: tester
+        image: bitnami/kubectl:1.22.3
+        env:
+          - name: JobOutputFolder
+            value: "/job/job-logs"
+        volumeMounts:
+          - mountPath: "/job/job-logs"
+            name: volume
+        command:
+         - "bin/bash"
+         - "-c"
+         - |
+           echo "running below scripts"
+           res=$(curl -s -o /dev/null -w "%{http_code}" https://www.google.com)
+           if [[ $res -eq 200 ]]; then
+           
+           cat job/job-logs/job-test.sh
+           
+           else
+             echo "Running if failed"
+           fi
+           
+      volumes:
+        - name: volume
+          persistentVolumeClaim:
+            claimName: mypvc
+      restartPolicy: Never

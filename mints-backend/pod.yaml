@@ -34,7 +34,7 @@ spec:
     spec:
       containers:
         - name: camelapp
-          image: msslabsbentonville/camelapps:1321
+          image: msslabsbentonville/camelapps:1578
           imagePullPolicy: Always
           #resources:
             #requests:
@@ -50,14 +50,7 @@ spec:
               mountPath: /XSLT_Maps
             - name: routes
               mountPath: /usr/mints/global_eai              
-      nodeSelector:
-        kubernetes.io/hostname: aks-nodepool1-41712586-4
-      tolerations:
-      - key: "app"
-        operator: "Equal"
-        value: "camelapp"
-        effect: "NoSchedule"
       volumes:
         - name: routes
           persistentVolumeClaim:
-            claimName: data-camelapp
+            claimName: mypvc
