@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: command-execution
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      app: external-kubectl
+  template:
+    metadata:
+      name: command-execution
+      labels:
+        app: external-kubectl
+    spec:
+      serviceAccountName: internal-kubectl
+      containers:
+      - name: tester
+        image: bitnami/kubectl:1.22.3
+        env:
+          - name: JobOutputFolder
+            value: "/home"
+        volumeMounts:
+          - mountPath: "/home"
+            name: volume
+        command:
+         - "bin/bash"
+         - "-c"
+         - |
+           echo "running below scripts"
+           res=$(curl -s -o /dev/null -w "%{http_code}" https://www.google.com)
+           if [[ $res -eq 200 ]]; then
+
+           echo "work in progress"
+
+           watch -d -t -g ls -lR "/home" && "kubectl get pods"
+  
+           sleep 5000
+
+           else
+             echo "Running if failed"
+           fi
+           
+      volumes:
+        - name: volume
+          persistentVolumeClaim:
+            claimName: mypvc
+      restartPolicy: Always
