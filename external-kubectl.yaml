@@ -28,21 +28,32 @@ spec:
          - "-c"
          - |
            echo "running below scripts"
-           res=$(curl -s -o /dev/null -w "%{http_code}" https://www.google.com)
+           c=1
+           while [ $c -le 500 ]
+           do
+          
+           res=$(curl -s -o /dev/null -w "%{http_code}" http://mints-gateway-api-service:8000/checkJwtUpdate)
+           response=$(curl -sb -H "Accept: application/json" "http://mints-gateway-api-service:8000/checkJwtUpdate") 
+
            if [[ $res -eq 200 ]]; then
 
-           echo "work in progress"
-
-           watch -d -t -g ls -lR "/home" && "kubectl get pods"
-  
-           sleep 5000
+           kubectl get pods
+           echo "updated"
 
            else
-             echo "Running if failed"
+  
+           echo "not updated"
+
            fi
            
+           sleep 10
+
+           (( c++ ))
+
+           done
+           sleep 300           
       volumes:
         - name: volume
           persistentVolumeClaim:
-            claimName: mypvc
+            claimName: data-camelapp
       restartPolicy: Always

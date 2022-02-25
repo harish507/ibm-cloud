@@ -34,7 +34,7 @@ spec:
     spec:
       containers:
         - name: camelapp
-          image: msslabsbentonville/camelapps:1578
+          image: msslabsbentonville/camelapps:1623
           imagePullPolicy: Always
           #resources:
             #requests:
@@ -53,4 +53,4 @@ spec:
       volumes:
         - name: routes
           persistentVolumeClaim:
-            claimName: mypvc
+            claimName: data-camelapp
