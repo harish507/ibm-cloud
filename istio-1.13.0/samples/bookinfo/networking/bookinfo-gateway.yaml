@@ -39,3 +39,14 @@ spec:
         host: camelapp
         port:
           number: 8222
+  - match:
+    - uri:
+        regex: /gateway
+    route:
+    - destination:
+        host: mints-gateway-api-service
+        port:
+          number: 8000
+
+
+
