@@ -31,7 +31,7 @@
               spec:
                 containers:
                 - name: tx-rest1
-                  image: msslabsbentonville/itx9:unfenced-updated
+                  image: msslabsbentonville/itx9:latest
                   imagePullPolicy: IfNotPresent
                   ports:
                   - name: port8080
