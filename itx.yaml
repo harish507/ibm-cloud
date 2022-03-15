@@ -31,7 +31,7 @@
               spec:
                 containers:
                 - name: tx-rest1
-                  image: msslabsbentonville/itx9:latest
+                  image: msslabsbentonville/itx9:unfenced-updated
                   imagePullPolicy: IfNotPresent
                   ports:
                   - name: port8080
@@ -42,4 +42,4 @@
                 volumes:
                   - name: routes
                     persistentVolumeClaim:
-                      claimName: data-camelapp
+                      claimName: elk

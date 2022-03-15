@@ -1,0 +1,15 @@
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: elk
+  annotations:
+    volume.beta.kubernetes.io/storage-class: "ibmc-file-bronze-gid-custom"
+  labels:
+    billingType: "monthly"
+spec:
+  accessModes:
+  - ReadWriteMany
+  resources:
+    requests:
+      storage: 20Gi
+

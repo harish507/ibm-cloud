@@ -1,0 +1,18 @@
+apiVersion: storage.k8s.io/v1beta1
+kind: StorageClass
+metadata:
+  name: ibmc-file-bronze-gid-custom
+  labels:
+    kubernetes.io/cluster-service: "true"
+provisioner: ibm.io/ibmc-file
+parameters:
+  type: "Endurance"
+  iopsPerGB: "2"
+  sizeRange: "[1-12000]Gi"
+  mountOptions: nfsvers=4.1,hard
+  billingType: "hourly"
+  reclaimPolicy: "Delete"
+  classVersion: "2"
+  gidAllocate: "true"
+  gidFixed: "65165"
+
