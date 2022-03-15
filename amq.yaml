@@ -27,7 +27,7 @@ spec:
       volumes:
         - name: routes
           persistentVolumeClaim:
-            claimName: mypvc
+            claimName: elk
 ---
 apiVersion: v1
 kind: Service

@@ -1,0 +1,44 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: txrest-deployment2
+  namespace: default
+labels:
+  app: tx-rest2
+spec:
+  type: LoadBalancer
+  ports:
+  - name: http-8080
+    port: 8080
+  selector:
+    app: tx-rest2
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: txrest-deployment2
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      app: tx-rest2
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: tx-rest2
+    spec:
+      containers:
+      - name: tx-rest2
+	image: msslabsbentonville/itx9:unfenced-updated
+	imagePullPolicy: IfNotPresent
+        ports:
+        - name: port8080
+          containerPort: 8080
+        volumeMounts:
+        - mountPath: "/opt/ITX/rest"
+          name: routes
+      volumes:
+      - name: routes
+	persistentVolumeClaim:
+	  claimName: elk
