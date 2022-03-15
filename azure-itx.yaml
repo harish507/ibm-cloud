@@ -3,8 +3,8 @@ kind: Service
 metadata:
   name: txrest-deployment2
   namespace: default
-labels:
-  app: tx-rest2
+  labels:
+    app: tx-rest2
 spec:
   type: LoadBalancer
   ports:
@@ -30,8 +30,8 @@ spec:
     spec:
       containers:
       - name: tx-rest2
-	image: msslabsbentonville/itx9:unfenced-updated
-	imagePullPolicy: IfNotPresent
+        image: msslabsbentonville/itx9:unfenced-updated
+        imagePullPolicy: IfNotPresent
         ports:
         - name: port8080
           containerPort: 8080
@@ -40,5 +40,5 @@ spec:
           name: routes
       volumes:
       - name: routes
-	persistentVolumeClaim:
-	  claimName: elk
+        persistentVolumeClaim:
+          claimName: elk
