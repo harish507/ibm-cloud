@@ -1,0 +1,10 @@
+---
+- hosts: localhost
+  connection: local
+  tasks:
+    - name: Deploying auth-service
+      command: kubectl create -f deployment.yaml
+      register: main
+    - debug:
+        var: main
+

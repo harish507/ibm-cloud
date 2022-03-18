@@ -1,0 +1,10 @@
+com\miracle\mints\datamapper\model\CrossReference.class
+com\miracle\mints\datamapperservice\DataMapperServiceApplication.class
+com\miracle\mints\utility\ServiceInvoker.class
+com\miracle\mints\datamapper\model\DataMapperKeys.class
+com\miracle\mints\datamapper\controller\DataMapperController.class
+com\miracle\mints\utility\DataTransformService.class
+com\miracle\mints\datamapper\model\MetaData.class
+com\miracle\mints\datamapper\model\DataMapperData.class
+com\miracle\mints\datamapper\model\InputObject.class
+com\miracle\mints\constants\DataMapperConstants.class

@@ -1,0 +1,10 @@
+---
+- hosts: localhost
+  connection: local
+  tasks:
+    - name: Deploying data-mapper-api
+      command: kubectl create -f pod.yaml
+      register: main
+    - debug:
+        var: main
+

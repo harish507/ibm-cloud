@@ -1,0 +1,56 @@
+
+
+GET  http://localhost:8081/api/istd_codes/keys/India HTTP/1.1
+
+###
+GET  http://localhost:8081/api/getKey/istd_codes/India HTTP/1.1
+
+###
+
+GET
+http://localhost:8081/api/maps/istd_codes/keys/India
+http://localhost:8081/api/maps/istd_codes
+http://localhost:8081/api/maps
+
+POST
+http://localhost:8081/api/maps/istd_codes
+
+
+POST  http://localhost:8081/api/insert HTTP/1.1
+content-type: application/json
+
+{
+"mapName":"istd_codes",
+"keyName":[
+    "India", "US"
+],
+"value":[
+    "+91","+1"
+]
+}
+###
+
+
+
+GET  http://localhost:8083/api/istd_codes/keys/India HTTP/1.1
+
+###
+POST  http://localhost:8083/api/processPayload HTTP/1.1
+content-type: application/json
+
+{
+    "payload": "{\"inOrder\":{\"orderno\":\"1111\",\"ordername\":\"TEST\",\"ponumber\":\"2222\",\"customerno\":\"3333\",\"address\":{\"streetno\":\"4444\",\"countryname\":\"US\",\"countrycode\":\"UK\",\"postalcode\":\"4789\"}}}",
+    "metadata": {
+        "contentType": "JSON",
+        "mapName":"istd_codes",
+        "inputFields": ["inOrder.address.countryname","inOrder.address.countrycode"],
+        "outputFields": ["inOrder.address.streetno","inOrder.address.postalcode"]
+    }
+}
+###
+
+
+
+GET  http://localhost:8083/api/getKey/istd_codes/India HTTP/1.1
+
+###

@@ -1,0 +1,47 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: data-mapper-api-service
+  namespace: default
+spec:
+  selector:
+    app: data-mapper-api-service
+  ports:
+    - protocol: TCP
+      #Port accessible inside cluster
+      port: 8083
+      # Port to forward to inside the pod
+      targetPort: 8083
+  type: LoadBalancer
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: data-mapper-api-service
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      app: data-mapper-api-service
+  replicas: 1
+  minReadySeconds: 15
+  template:
+    metadata:
+      labels:
+        app: data-mapper-api-service
+    spec:
+      containers:
+        - name: data-mapper-api-service
+          image: msslabsbentonville/data-mapper-api:1314
+          imagePullPolicy: Always
+
+          ports:
+            - containerPort: 8083
+              protocol: TCP
+          volumeMounts:
+            - name: routes
+              mountPath: /usr/src/app/resources
+      volumes:
+        - name: routes
+          persistentVolumeClaim:
+            claimName: data-camelapp
