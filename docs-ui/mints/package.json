@@ -1,0 +1,32 @@
+{
+  "name": "mints-documentation",
+  "version": "1.0.0",
+  "description": "Documentation for MINTS Portal",
+  "main": "index.html",
+  "scripts": {
+    "install": "npm install md-to-site serve",
+    "build": "md-to-site -b --site-title \"Miracle Integration Service\" --source MINTS --index Introduction.md",
+    "copy1": "copyfiles -u 1 ./MINTS/images/*.* ./build",
+    "copy2": "copyfiles -u 1 ./Custom/style.css ./build/css",
+    "copy3": "copyfiles -u 1 ./Custom/scripts.js ./build/js",
+    "copy4": "copyfiles -u 1 ./Custom/menu.html ./build",
+    "copy": "npm run copy1 && npm run copy2 && npm run copy3 && npm run copy4",
+    "start": "npm run install && npm run build && npm run copy && serve ./build",
+    "serve": "serve ./build",
+    "dev": "npm run build && npm run copy && serve ./build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://mars.miraclesoft.com/integration-coe/documentation/mints.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "md-to-site": "^1.5.0",
+    "serve": "^13.0.2"
+  },
+  "devDependencies": {
+    "copyfiles": "^2.4.1"
+  }
+}

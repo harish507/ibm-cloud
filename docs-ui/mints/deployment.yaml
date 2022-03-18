@@ -1,0 +1,46 @@
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: mints-doc-service
+  namespace: default
+spec:
+  selector:
+    app: mints-doc-service
+  ports:
+    - protocol: TCP
+      #Port accessible inside cluster
+      port: 3000
+      # Port to forward to inside the pod
+      targetPort: 3000
+      #Port accessible outside cluster
+      #reactappPort: 30567
+  type: LoadBalancer
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mints-doc-service
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      app: mints-doc-service
+  replicas: 1
+  minReadySeconds: 15
+  template:
+    metadata:
+      labels:
+        app: mints-doc-service
+    spec:
+      containers:
+        - name: mints-doc-service
+          image: msslabsbentonville/mints-doc:1639
+          imagePullPolicy: Always
+          #resources:
+          #requests:
+          #memory: "400Mi"
+          #cpu: "500m"
+          ports:
+            - containerPort: 3000
+              protocol: TCP
